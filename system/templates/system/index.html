@@ -1,0 +1,28 @@
+{%  extends 'system/base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center"style="height: 100%;">
+    <form method="post" class="d-flex flex-column" role="search">
+      {% csrf_token %}
+        <label>DATE:</label>
+        <input  name="date" class="form-control me-2" type="month" placeholder="date" aria-label="Search">
+        <label>Average cost</label>
+        <input  name="average_cost" class="form-control me-2" type="number" placeholder="cost" aria-label="Search">
+        <label>Population:</label>
+        <input name="population" class="form-control me-2" type="number" placeholder="population" aria-label="Search">
+        <label>Water Costs:</label>
+        <input name="water_cost" class="form-control me-2" type="number" placeholder="water cost" aria-label="Search">
+        <label>Household size:</label>
+        <input name="household_size" class="form-control me-2" type="number" placeholder="household size" aria-label="Search">
+        <br/>
+        <button class="btn btn-outline-success" type="submit"> SUBMIT</button>
+
+        <br/>
+        <br/>
+        <strong> prediction volume: {{value}} litres</strong>
+      </form>
+
+     
+
+</div>
+{% endblock %}
