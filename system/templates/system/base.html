@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html style="height: 100%;>
+<html style="height: 100%;">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,20 +23,18 @@
           <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="/contribute">Contribute</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="/support">Support</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Link
+                  Profile
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Register</a></li>
+                  <li><a class="dropdown-item" href="#">Login</a></li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -50,6 +48,16 @@
 	
       <!-- end navbar-->
       {% block content %}
+      <footer class="footer">
+        <div class="container">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <p>Author: <span>JimmyKurui</span></p>
+            <p>Portfolio Site: <span><a href="http://jimmykurui.github.io" target="_blank" rel="noopener noreferrer">Website</a></span></p>
+          </div>
+          <div class="col-4"></div>
+        </div>
+      </footer>
       {% endblock %}
     </body>
 </html>

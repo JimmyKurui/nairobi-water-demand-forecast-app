@@ -1,0 +1,39 @@
+{%  extends 'system/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row contribute-banner">
+      <h2>Want to Support This Project ?</h2>
+      <p class="italic">We are looking for sources of data on water consumption and socio-economic factors affecting Nairobi county residents.</p> 
+      <p class="">We also welcome professionals from various fields interested in data analysis and AI to make this project more robust and serve the community better</p>
+    </div>
+    <form method="post" class="d-flex flex-column" role="search" action="/contribute">
+      {% csrf_token %}
+        <h3>Kindly fill this form to share your contribution</h3>
+        <label>Name:</label>
+        <input  name="name" class="form-control me-2" type="text" placeholder="name" aria-label="Search">
+        <label>Email:</label>
+        <input required name="email" class="form-control me-2" type="email" placeholder="email" aria-label="Search">
+        <label>Type of Support:</label>
+        <label>Water Consumption Data:
+          <input checked name="support_type" class="form-control me-2" type="radio" placeholder="support_type" aria-label="Search">
+        </label>
+        <label>Socio-Economic Data:
+          <input name="support_type" class="form-control me-2" type="radio" placeholder="support_type" aria-label="Search">
+        </label>
+        <label>Data Analysis and AI:
+          <input name="support_type" class="form-control me-2" type="radio" placeholder="support_type" aria-label="Search">
+        </label>
+        <label>Other:</label>
+        <input name="support_type" class="form-control me-2" type="radio" placeholder="support_type" aria-label="Search">
+        <label>Description:</label>
+        <textarea required name="description" class="form-control me-2" cols="12" rows="5" placeholder="household size" aria-label="Search"></textarea>
+        <label>File Upload</label>
+        <input name="contribution_file" class="form-control me-2" type="radio" placeholder="support_type" aria-label="Search">
+        <br/>
+        <button name="contribute_button" class="btn btn-outline-success" type="submit">Submit</button>
+        <br/>
+      </form>
+
+</div>
+{% endblock %}
