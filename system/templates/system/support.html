@@ -1,0 +1,28 @@
+{%  extends 'system/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row contribute-banner">
+      <h2>Challenges In Using Application</h2>
+      <p>If you have any challenges using the application, feel free to grab a copy of the documentation below</p>
+    </div>
+    <div class="row">
+      <input name="manual" type="file" class="form-control me-2" value="/{storage}/manual" >
+      <form method="post" class="d-flex flex-column" role="search" action="/support/request">
+      {% csrf_token %}
+        <h3>Kindly fill in the form for any further challenges</h3>
+        <label>Name:</label>
+        <input  name="name" class="form-control me-2" type="text" placeholder="name" aria-label="Search">
+        <label>Email:</label>
+        <input required name="email" class="form-control me-2" type="email" placeholder="email" aria-label="Search">
+        <label>Description:</label>
+        <textarea required name="description" class="form-control me-2" cols="12" rows="5" placeholder="household size" aria-label="Search"></textarea>
+        <label>File Upload</label>
+        <input name="request_upload" class="form-control me-2" type="radio" placeholder="support_type" aria-label="Search">
+        <br/>
+        <button name="request_button" class="btn btn-outline-success" type="submit">Submit Request</button>
+        <br/>
+      </form>
+    </div>
+</div>
+{% endblock %}

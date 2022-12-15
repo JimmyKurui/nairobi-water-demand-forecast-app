@@ -1,0 +1,48 @@
+{%  extends 'system/base.html' %}
+
+{% block content %}
+  <main>
+    <div class="container-fluid">
+        <div class="row main-view" style="height: 120vh ;">
+            <div class="col-2">
+                <div class="dashboard-menu" style="background-color: darkcyan; padding: 2p;">
+                    <select class="custom-select">
+                        <option selected>Location</option>
+                        <option value="1">-- Nairobi</option>
+                        <option value="2">Langata</option>
+                        <option value="3">Westlands</option>
+                    </select>
+                    <select class="custom-select">
+                        <option selected>Factors</option>
+                        <option value="1">-- All</option>
+                        <option value="2">Cost of water</option>
+                        <option value="3">Population</option>
+                        <option value="3">Income level</option>
+                    </select>
+                    <a href="/report/edit" type="button" class="list-group-item list-group-item-action">Generate report</a>
+                </div>   
+            </div>         
+            <div class="col-10">
+              <div class="row">
+                <div class="col-4-md col-5-lg">
+                  <h3 class="graph">Graph Area</h3>
+                  <div class="volume-prediction-graph border-end border-2 border-info"></div>
+                  <div class="factors-contribution-chart"></div>
+                </div>
+                <div class="col-8-md col-7-lg">
+                  <h3 class="map">Map Area</h3>
+                  <div class="nairobi-map">
+                    <img src="/nairobi-map.png" alt="" srcset="">
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+     
+
+</div>
+{% endblock %}
