@@ -6,6 +6,8 @@ from keras.models import load_model
 import tensorflow as tf
 import sklearn 
 from sklearn.preprocessing import Normalizer, StandardScaler
+from system.models import WaterDataSql,Prediction_save
+import datetime
 
 
 # Create your views here.
@@ -35,24 +37,22 @@ def homepage(request):
         model = load_model('model/IS_Project_2.h5')
         prediction=model.predict(x_predict)
         prediction=scaler.inverse_transform(prediction)
+        save_pred=Prediction_save()
+        save_pred.prediction_volume=prediction
+        save_pred.save()
         #print(prediction)
-        return render(request,'system/dashboard.html',context={'value':int(prediction)})
+        return redirect(dashboard)
 
     return render(request,'system/index.html')
 
 # Dashboard for 2 graphs and a map image
 def dashboard(request):
-    # df = pd.read_excel()
-    # volume-prediction-graph = get_graph(df['month'], df['volume'], 'Consumption per month')
-    # # slicing removes volume, month at the end and plots other independent variables
-    # factors-contribution-chart = get_graph(df[1: len(df.keys)-1])
-    return render(request,'system/dashboard.html')
-
-# def report():
-#     if request.method == "POST":
-#         factors = request.POST['factors']
-#         = request.POST['']
-#         support_type=request.POST['support_type']
+    data=WaterDataSql.objects.all()
+    data_list_volume=[]
+    format = '%d/%m/%Y'
+    for iterator in range(len(data)):
+        data_list_volume.append(float(data[iterator].volume))
+    return render(request,'system/dashboard.html',context={'data_volume':data_list_volume})
 
 def contribute(request):
     if request.method == "POST":
