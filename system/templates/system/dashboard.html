@@ -1,5 +1,5 @@
 {%  extends 'system/base.html' %}
-
+{% load static %}
 {% block content %}
   <main>
     <div class="container-fluid">
@@ -26,7 +26,11 @@
               <div class="row">
                 <div class="col-4-md col-5-lg">
                   <h3 class="graph">Graph Area</h3>
-                  <div class="volume-prediction-graph border-end border-2 border-info"></div>
+                  <div class="volume-prediction-graph border-end border-2 border-info">
+                    <!--Graph -->
+                      <canvas id="myChartA" style="width:70%;"></canvas>
+                      <canvas id="myChartB" style="width:70%;"></canvas>
+                  </div>
                   <div class="factors-contribution-chart"></div>
                 </div>
                 <div class="col-8-md col-7-lg">
@@ -45,4 +49,88 @@
      
 
 </div>
+<script>
+
+new Chart("myChartA", {
+    type: 'line', //this denotes tha type of chart
+
+    data: {// values on X-Axis
+      labels: [1,2,3,4,5,6,7,8,9], 
+       datasets: [
+        {
+        
+          label: "ACTUAL",
+          data: [12,12,15,17],
+          borderColor: 'red',
+          backgroundColor: 'magenta',
+          fill:false
+        } ,
+        {
+        
+        label: "PREDICTED",
+        data: [12,12,15,17,25],
+        borderColor: 'blue',
+        backgroundColor: 'magenta',
+        fill:false
+      },
+      {
+        
+        label: "PREDICTED",
+        data: [13,14,17,17,25],
+        borderColor: 'orange',
+        backgroundColor: 'magenta',
+        fill:false
+      }   
+        
+      ]
+    },
+    options: {
+      scales: {
+        xAxes:[{
+          scaleLabel: {
+            display: true,
+            labelString: 'HITS'
+          }
+        }],
+          yAxes:[{
+            scaleLabel: {
+              display: true,
+              labelString: 'kWh'
+            },
+            ticks:{
+              min: 0,
+              max: 75,
+              step: 0.5
+            }
+          }]
+      }
+    }
+    
+  });
+
+
+  new Chart("myChartB", {
+    type: 'doughnut', //this denotes tha type of chart
+
+    data: {// values on X-Axis
+      labels: ['HOUSEHOLD SIZE','POPULATION','COST','VOLUME'], 
+       datasets: [{
+      label:" Co-linearity",
+       data: [1.0435, 1.3240, 1.45450,1.75675],
+       backgroundColor: ["red","orange","yellow","green"]
+       }
+        
+      ]
+    },
+    options: {
+        responsive: true,
+        title:{
+            display: true,
+            text: "CO-LINEARITY"
+        }
+    }
+    
+  });
+
+</script>
 {% endblock %}
